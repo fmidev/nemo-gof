@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+
+<!--
+============================================================================================================
+=                                           output files definition                                        =
+=                                            Define your own filesfor ocean dynamics context               =
+=                                         put the variables you want...                                    =
+============================================================================================================
+    -->
+   
+    <file_definition type="one_file" name="@expname@_@freq@_@startdate@_@enddate@" sync_freq="1d" min_digits="4">
+
+      <file_group id="1ts" output_freq="1ts"  output_level="10" enabled=".FALSE."> <!-- 1 time step files -->
+       <file id="file10" name_suffix="_grid_T" description="ocean T grid variables" enabled=".false.">
+          <field field_ref="sst"  />
+          <field field_ref="sss"  />
+          <field field_ref="ssh"  />
+       </file>
+      </file_group>
+
+      <file_group id="1h" output_freq="1h"  output_level="10" enabled=".TRUE."> <!-- 1h files -->
+       <file id="file11" name_suffix="_grid_T" description="ocean T grid variables" enabled=".true." >
+          <field field_ref="sst"  />
+          <field field_ref="sss"  />
+          <field field_ref="ssh"  />
+      	  <field field_ref="wspd"  />
+      	  <field field_ref="taum"  />
+       </file>
+
+      	<file id="file13" name_suffix="_grid_U" description="ocean U grid variables" enabled=".true.">
+	        <field field_ref="uoce"          name="uoce"      />
+	        <field field_ref="e3u" />
+	        <field field_ref="ssu"          name="uos"      />
+          <field field_ref="ubar"          name="ubar"      />
+	        <field field_ref="utau"         name="tauuo"    />
+	      </file>
+	
+      	<file id="file14" name_suffix="_grid_V" description="ocean V grid variables" enabled=".true.">
+          <field field_ref="voce"          name="voce"      />
+	        <field field_ref="e3v" />
+	        <field field_ref="ssv"          name="vos"      />
+          <field field_ref="vbar"          name="vbar"      />
+	        <field field_ref="vtau"         name="tauvo"    />
+      	</file>
+
+    	  <file id="file16" name_suffix="_grid_W" description="ocean W grid variables" enabled=".true.">
+  	      <field field_ref="woce"         name="woce"  />
+	        <field field_ref="e3w" />
+    	  </file>
+
+      </file_group>
+
+      <file_group id="6h" output_freq="6h"  output_level="10" enabled=".TRUE."> <!-- 6h files -->
+
+       <file id="file12" name_suffix="_grid_T" description="ocean T grid variables" enabled=".true." >
+          <field field_ref="toce" />
+          <field field_ref="soce" />
+      	  <field field_ref="precip" />
+       </file>
+
+      </file_group>
+ 
+      <file_group id="5d" output_freq="5d"  output_level="10" enabled=".false.">  <!-- 5d files -->   
+        <file id="file15" name_suffix="_grid_T" description="ocean T grid variables" enabled=".FALSE.">
+          <field field_ref="e3t"      />
+	        <field field_ref="saltflx"      name="sfx"      />
+	        <field field_ref="taum"         name="taum"     />
+	        <field field_ref="wspd"         name="windsp"   />
+	        <field field_ref="precip"       name="precip"   />
+    	  </file>
+      </file_group> 
+
+      <file_group id="1m" output_freq="1mo" output_level="10" enabled=".false."> <!-- real monthly files -->
+	
+        <file id="file17" name_suffix="_scalar" description="scalar variables" >
+          <!-- global drifts (conservation checks) -->
+          <field field_ref="bgtemper"     grid_ref="grid_1point"   name="bgtemper"    />
+          <field field_ref="bgsaline"     grid_ref="grid_1point"   name="bgsaline"    />
+          <field field_ref="bgheatco"     grid_ref="grid_1point"   name="bgheatco"    />
+          <field field_ref="bgheatfx"     grid_ref="grid_1point"   name="bgheatfx"    />
+          <field field_ref="bgsaltco"     grid_ref="grid_1point"   name="bgsaltco"    />
+          <field field_ref="bgvolssh"     grid_ref="grid_1point"   name="bgvolssh"    />
+          <field field_ref="bgvole3t"     grid_ref="grid_1point"   name="bgvole3t"    />
+
+          <!-- global surface forcings  -->
+          <field field_ref="bgfrcvol"     grid_ref="grid_1point"   name="bgfrcvol"    />
+          <field field_ref="bgfrctem"     grid_ref="grid_1point"   name="bgfrctem"    />
+          <field field_ref="bgfrchfx"     grid_ref="grid_1point"   name="bgfrchfx"    />
+          <field field_ref="bgfrcsal"     grid_ref="grid_1point"   name="bgfrcsal"    />
+        </file>
+
+      </file_group>
+
+      <file_group id="1y"  output_freq="1y" output_level="10" enabled=".false."> <!-- real yearly files -->
+      </file_group>
+	
+      
+      <file_group id="1ts" output_freq="1ts" output_level="10" enabled=".TRUE."/> <!-- 1 time step files -->
+      <file_group id="2h"  output_freq="2h"  output_level="10" enabled=".TRUE."/> <!-- 2h files -->
+      <file_group id="3h"  output_freq="3h"  output_level="10" enabled=".TRUE."/> <!-- 3h files -->     
+      <file_group id="4h"  output_freq="4h"  output_level="10" enabled=".TRUE."/> <!-- 4h files -->
+      <file_group id="6h"  output_freq="6h"  output_level="10" enabled=".TRUE."/> <!-- 6h files -->     
+      <file_group id="2m"  output_freq="2mo" output_level="10" enabled=".TRUE."/> <!-- real 2m files -->
+      <file_group id="3m"  output_freq="3mo" output_level="10" enabled=".TRUE."/> <!-- real 3m files -->
+      <file_group id="4m"  output_freq="4mo" output_level="10" enabled=".TRUE."/> <!-- real 4m files -->
+      <file_group id="6m"  output_freq="6mo" output_level="10" enabled=".TRUE."/> <!-- real 6m files -->
+      <file_group id="2y"  output_freq="2y"  output_level="10" enabled=".TRUE."/> <!-- real 2y files -->
+      <file_group id="5y"  output_freq="5y"  output_level="10" enabled=".TRUE."/> <!-- real 5y files -->
+      <file_group id="10y" output_freq="10y" output_level="10" enabled=".TRUE."/> <!-- real 10y files -->
+
+   </file_definition>
+    
+
+
+
